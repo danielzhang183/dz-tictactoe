@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "antfu.vite",
+    "antfu.goto-alias",
+    "dbaeumer.vscode-eslint"
+  ]
+}
