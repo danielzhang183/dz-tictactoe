@@ -4,7 +4,7 @@ import './App.css'
 function Square(props) {
   return (
     <button
-      className="square"
+      className={`square ${props.className}`}
       onClick={props.onClick}
     >
       {props.value}
@@ -16,6 +16,7 @@ class Board extends React.Component {
   renderSquare(i) {
     return (
       <Square
+        className={this.props.move === i ? 'selected' : ''}
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
       />
@@ -51,7 +52,7 @@ class Game extends React.Component {
     this.state = {
       history: [{
         squares: Array(9).fill(null),
-        i: 0,
+        i: -1,
       }],
       xIsNext: true,
       stepNumber: 0,
@@ -105,6 +106,7 @@ class Game extends React.Component {
       <div className="game">
         <div className="game-board">
           <Board
+            move={current.i}
             squares={current.squares}
             onClick={i => this.handleClick(i)}
           />
